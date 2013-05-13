@@ -27,11 +27,15 @@ namespace SportsStore.WebUI.Controllers
             return View();
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
-            ProductsListViewModel model = new ProductsListViewModel
+            ProductsListViewModel viewModel = new ProductsListViewModel
             {
                 Products = repository.Products
+                .Where(delegate(Product p)
+                {
+                    return (category == null || p.Category.Equals(category, StringComparison.OrdinalIgnoreCase));
+                })
                 .OrderBy(delegate(Product p)
                 {
                     return p.ProductID;
@@ -41,11 +45,17 @@ namespace SportsStore.WebUI.Controllers
                 PagingInfo = new PagingInfo {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Products.Count()
-                }
+                    TotalItems = category == null ? 
+                        repository.Products.Count() :
+                        repository.Products.Where(delegate(Product e)
+                        {
+                            return e.Category.Equals(category, StringComparison.OrdinalIgnoreCase);
+                        }).Count()
+                },
+                CurrentCategory = category
             };
 
-            return View(model);
+            return View(viewModel);
         }
     }
 }
