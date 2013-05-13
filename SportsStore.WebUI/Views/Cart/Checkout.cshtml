@@ -1,0 +1,68 @@
+﻿@model SportsStore.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "SportStore: Checkout";
+}
+
+<h2>Check out now</h2>
+Please enter your details, and we'll ship your goods right away!
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend><h3>Ship to</h3></legend>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>@Html.EditorFor(x => x.Name)</td>
+            </tr>
+        </table>
+    </fieldset>
+    
+    <fieldset>
+        <legend><h3>Address</h3></legend>
+        <table>
+            <tr>
+                <td>Line 1:</td>
+                <td>@Html.EditorFor(x => x.Line1)</td>
+            </tr>
+            <tr>
+                <td>Line 2:</td>
+                <td>@Html.EditorFor(x => x.Line2)</td>
+            </tr>
+            <tr>
+                <td>Line 3:</td>
+                <td>@Html.EditorFor(x => x.Line3)</td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>@Html.EditorFor(x => x.City)</td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td>@Html.EditorFor(x => x.State)</td>
+            </tr>
+            <tr>
+                <td>Zip:</td>
+                <td>@Html.EditorFor(x => x.Zip)</td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td>@Html.EditorFor(x => x.Country)</td>
+            </tr>
+        </table>
+    </fieldset>
+    
+    <fieldset>
+        <legend><h3>Options</h3></legend>
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            Gift wrap these items
+        </label>
+    </fieldset>
+    
+    <p align="center">
+        <input class="actionButtons" type="submit" value="Complete order" />
+    </p>
+}
