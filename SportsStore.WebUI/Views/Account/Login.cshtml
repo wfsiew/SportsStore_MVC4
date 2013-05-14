@@ -1,0 +1,30 @@
+﻿@model SportsStore.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Admin: Log In";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin: 0 auto; width: 600px; margin-top: 15%">
+    <fieldset>
+        <legend><h2>Login</h2></legend>
+        <p>Please log in to access the administrative area:</p>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(o => o.UserName): </td>
+                    <td>@Html.EditorFor(o => o.UserName)</td>
+                    <td>@Html.ValidationMessageFor(o => o.UserName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.Password): </td>
+                    <td>@Html.EditorFor(o => o.Password)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Password)</td>
+                </tr>
+            </table>
+            <p><input type="submit" value="Log in" /></p>
+        }
+    </fieldset>
+</div>
