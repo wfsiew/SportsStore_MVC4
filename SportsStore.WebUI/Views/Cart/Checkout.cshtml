@@ -8,7 +8,7 @@
 Please enter your details, and we'll ship your goods right away!
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary()
+    @Html.ValidationSummary(true)
 
     <fieldset>
         <legend><h3>Ship to</h3></legend>
@@ -16,6 +16,7 @@ Please enter your details, and we'll ship your goods right away!
             <tr>
                 <td>Name:</td>
                 <td>@Html.EditorFor(x => x.Name)</td>
+                <td>@Html.ValidationMessageFor(x => x.Name)</td>
             </tr>
         </table>
     </fieldset>
@@ -26,30 +27,37 @@ Please enter your details, and we'll ship your goods right away!
             <tr>
                 <td>Line 1:</td>
                 <td>@Html.EditorFor(x => x.Line1)</td>
+                <td>@Html.ValidationMessageFor(x => x.Line1)</td>
             </tr>
             <tr>
                 <td>Line 2:</td>
                 <td>@Html.EditorFor(x => x.Line2)</td>
+                <td></td>
             </tr>
             <tr>
                 <td>Line 3:</td>
                 <td>@Html.EditorFor(x => x.Line3)</td>
+                <td></td>
             </tr>
             <tr>
                 <td>City:</td>
                 <td>@Html.EditorFor(x => x.City)</td>
+                <td>@Html.ValidationMessageFor(x => x.City)</td>
             </tr>
             <tr>
                 <td>State:</td>
                 <td>@Html.EditorFor(x => x.State)</td>
+                <td>@Html.ValidationMessageFor(x => x.State)</td>
             </tr>
             <tr>
                 <td>Zip:</td>
                 <td>@Html.EditorFor(x => x.Zip)</td>
+                <td></td>
             </tr>
             <tr>
                 <td>Country:</td>
                 <td>@Html.EditorFor(x => x.Country)</td>
+                <td>@Html.ValidationMessageFor(x => x.Country)</td>
             </tr>
         </table>
     </fieldset>
